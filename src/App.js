@@ -1,6 +1,7 @@
+import ReactDOM from "react-dom";
 import "./App.css";
-
 const arr = [];
+const numbers = [];
 const App = () => {
   const getRandom = () => Math.floor(Math.random() * 20) + 1;
 
@@ -9,17 +10,10 @@ const App = () => {
   }
 
   console.log(arr);
+  const listItems = arr.map((numbers) => <li>{numbers}</li>);
+  return <ul>{listItems}</ul>;
 };
 export default App;
 
-function displayLi({ props }) {
-  return (
-    <ul>
-      {props.arr.map((rand, i) => (
-        <li key="{i}">{rand}</li>
-      ))}
-    </ul>
-  );
-}
-
-// createRoot.render(<displayLi props={arr} />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App numbers={numbers} />);
