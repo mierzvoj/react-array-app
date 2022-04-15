@@ -1,16 +1,25 @@
 import "./App.css";
 
-function App() {
+const arr = [];
+const App = () => {
+  const getRandom = () => Math.floor(Math.random() * 20) + 1;
+
+  for (let i = 0; i < 10; i++) {
+    arr.push(getRandom());
+  }
+
+  console.log(arr);
+};
+export default App;
+
+function displayLi({ props }) {
   return (
-    <div className="App">
-      const element = (
-      <div>
-        <h1>Witaj świecie!</h1>
-        <h2>Aktualny czas: {new Date().toLocaleTimeString()}.</h2>
-      </div>
-      );
-    </div>
+    <ul>
+      {props.arr.map((rand, i) => (
+        <li key="{i}">{rand}</li>
+      ))}
+    </ul>
   );
 }
 
-export default App;
+// createRoot.render(<displayLi props={arr} />, document.getElementById("root"));
